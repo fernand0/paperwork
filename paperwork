@@ -24,6 +24,7 @@ LIST_FOLDERS = "/folders/list"
 ADD_FOLDER   = "/folders/add"
 DELETE_FOLDER = "/folders/delete"
 LIST_BOOKMARKS = "/bookmarks/list"
+ADD_BOOKMARK = "/bookmarks/add"
 DELETE_BOOKMARK = "/bookmarks/delete"
 MOVE_BOOKMARK  = "/bookmarks/move"
 OAUTH_ACCESS_TOKEN = "/oauth/access_token"
@@ -281,6 +282,30 @@ if command == "export":
 			bookmark_el.setAttribute("title", b["title"])
 			folder_el.appendChild(bookmark_el)
 	print newdoc.toprettyxml().encode("utf-8")
+
+################################################################################
+
+if command == "add":
+
+	theUrl = args[1]
+	
+	# add bookmark 
+	(response, data) = client.request(API_URL_PREFIX + ADD_BOOKMARK, "POST", urllib.urlencode({
+		"url": theUrl,
+		"title": "unread"
+		}))
+	
+	print response
+	print data
+	print data[data.index('bookmark_id')+2+len('bookmark_id'):data.index('url')-2]
+	bookmark_id=data[data.index('bookmark_id')+2+len('bookmark_id'):data.index('url')-2]
+
+
+	# http://www.instapaper.com/read/ bookmark_id
+
+	# Hacer lo que sea
+
+	# Archivar
 
 ################################################################################
 
