@@ -25,9 +25,11 @@ ADD_FOLDER   = "/folders/add"
 DELETE_FOLDER = "/folders/delete"
 LIST_BOOKMARKS = "/bookmarks/list"
 ADD_BOOKMARK = "/bookmarks/add"
+ARCHIVE_BOOKMARK = "/bookmarks/archive"
 DELETE_BOOKMARK = "/bookmarks/delete"
 MOVE_BOOKMARK  = "/bookmarks/move"
 OAUTH_ACCESS_TOKEN = "/oauth/access_token"
+GET_TEXT_BOOKMARK  = "/bookmarks/get_text"
 
 PROGRAM_NAME = "paperwork"
 
@@ -295,8 +297,6 @@ if command == "add":
 		"title": "unread"
 		}))
 	
-	print response
-	print data
 	print data[data.index('bookmark_id')+2+len('bookmark_id'):data.index('url')-2]
 	bookmark_id=data[data.index('bookmark_id')+2+len('bookmark_id'):data.index('url')-2]
 
@@ -306,6 +306,38 @@ if command == "add":
 	# Hacer lo que sea
 
 	# Archivar
+
+################################################################################
+
+if command == "archive":
+
+	bookmark_id = args[1]
+	
+	# archive bookmark 
+	(response, data) = client.request(API_URL_PREFIX + ARCHIVE_BOOKMARK, "POST", urllib.urlencode({
+		"bookmark_id": bookmark_id
+		}))
+	
+	print response
+	print data
+
+
+################################################################################
+
+if command == "get_text":
+
+	bookmark_id = args[1]
+	print "*",bookmark_id,"*"
+	
+	# get text of bookmark 
+	(response, data) = client.request(API_URL_PREFIX + GET_TEXT_BOOKMARK, "POST", urllib.urlencode({
+		"bookmark_id": bookmark_id
+		}))
+	
+	print response
+	print data
+
+
 
 ################################################################################
 
