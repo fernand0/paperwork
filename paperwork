@@ -57,30 +57,28 @@ where <action> can be:
 
 %(green)sfolders%(nocolour)s
     show list of folders
-
 %(green)sarticles%(nocolour)s
     dump URLs of all articles in all folders
-
 %(green)scount%(nocolour)s
     show list of folders (including unread) with article count
-
 %(green)sexport%(nocolour)s
     dump folders and articles as XML
-
 %(green)sbatch%(nocolour)s
     move max. 20 articles into a folder named with today's date
-
 %(green)semptyfolder%(nocolour)s <folder name>
     delete articles in the specified folder
-
 %(green)swipefolder%(nocolour)s <folder name>
     delete articles in the specified folder, and delete the folder
-
 %(green)sauth/authenticate%(nocolour)s -u <username>
     authenticate as the specified user
-
 %(green)sunauth/unauthenticate%(nocolour)s -u <username>
     remove authentication tokens for the specified user
+%(green)add%(nocolour)s url
+    add the url
+%(green)archive%(nocolour)s bookmark_id
+    archive this bookmark (needs subscription)
+%(green)get_text%(nocolour)s bookmark_id
+    gets this bookmark html text (needs subscription)
 """ % {"progname": PROGRAM_NAME, "red": RED, "green": GREEN, "nocolour": NO_COLOUR}
 
 ################################################################################
